@@ -24,15 +24,15 @@ PUSHER_EMAIL=$(jq -r ".pusher.email //empty" "$GITHUB_EVENT_PATH")
 NAME="${NAME:-${PUSHER_NAME}}"
 EMAIL="${EMAIL:-${PUSHER_EMAIL}}"
 
-if [[ -z "${NAME}" ]]; then
-  echo "You must set the NAME environment variable if the github event doesn't have a \"pusher\" key"
-  exit 1
-fi
+# if [[ -z "${NAME}" ]]; then
+#   echo "You must set the NAME environment variable if the github event doesn't have a \"pusher\" key"
+#   exit 1
+# fi
 
-if [[ -z "${EMAIL}" ]]; then
-  echo "You must set the EMAIL environment variable if the github event doesn't have a \"pusher\" key"
-  exit 1
-fi
+# if [[ -z "${EMAIL}" ]]; then
+#   echo "You must set the EMAIL environment variable if the github event doesn't have a \"pusher\" key"
+#   exit 1
+# fi
 
 # Use jq’s --arg properly escapes string values for us
 JSON=$(
@@ -40,16 +40,10 @@ JSON=$(
     --arg COMMIT  "$COMMIT" \
     --arg BRANCH  "$BRANCH" \
     --arg MESSAGE "$MESSAGE" \
-    --arg NAME    "$NAME" \
-    --arg EMAIL   "$EMAIL" \
     '{
       "commit": $COMMIT,
       "branch": $BRANCH,
       "message": $MESSAGE,
-      "author": {
-        "name": $NAME,
-        "email": $EMAIL
-      }
     }'
 )
 
