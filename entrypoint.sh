@@ -40,10 +40,16 @@ JSON=$(
     --arg COMMIT  "$COMMIT" \
     --arg BRANCH  "$BRANCH" \
     --arg MESSAGE "$MESSAGE" \
+    --arg PULL_REQUEST_ID "$PULL_REQUEST_ID" \
+    --arg PULL_REQUEST_REPOSITORY "$PULL_REQUEST_REPOSITORY" \
+    --arg PULL_REQUEST_BASE_BRANCH "$PULL_REQUEST_BASE_BRANCH" \
     '{
       "commit": $COMMIT,
       "branch": $BRANCH,
       "message": $MESSAGE,
+      "pull_request_id": $PULL_REQUEST_ID,
+      "pull_request_repository": $PULL_REQUEST_REPOSITORY,
+      "pull_request_base_branch": $PULL_REQUEST_BASE_BRANCH
     }'
 )
 
