@@ -49,7 +49,8 @@ JSON=$(
       "message": $MESSAGE,
       "pull_request_id": $PULL_REQUEST_ID,
       "pull_request_repository": $PULL_REQUEST_REPOSITORY,
-      "pull_request_base_branch": $PULL_REQUEST_BASE_BRANCH
+      "pull_request_base_branch": $PULL_REQUEST_BASE_BRANCH,
+      "ignore_pipeline_branch_filters": true
     }'
 )
 
